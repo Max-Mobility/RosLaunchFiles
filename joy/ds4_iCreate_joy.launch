@@ -1,0 +1,13 @@
+<launch>
+
+<!-- ds4drv -->
+<!-- <node name="ds4drv_script" pkg="joy" type="run_ds4drv.sh" launch-prefix="sudo" /> -->
+
+<!-- joy node -->
+<node respawn="true" pkg="joy" type="joy_node" name="ds4_joy" ns="iCreate">
+<param name="dev" type="string" value="/dev/input/js0" />
+<param name="deadzone" value="0.08" />
+<param name="coalesce_interval" value="0.01" />
+</node>
+
+</launch>
