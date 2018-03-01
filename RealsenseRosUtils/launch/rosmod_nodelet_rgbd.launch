@@ -171,65 +171,65 @@
     </include>
 
 
-  <group ns="$(arg camera1)">
+    <group ns="$(arg camera1)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera1)" />
+	<arg name="camera_type"  value="$(arg camera1_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera1_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera1_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera1_depth)" />
+	<arg name="rgb"          value="$(arg camera1_rgb)" />
+	<arg name="ir"           value="$(arg camera1_ir)" />
+      </include>
+
+    </group> 
+
+   <group ns="$(arg camera2)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera2)" />
+	<arg name="camera_type"  value="$(arg camera2_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera2_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera2_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera2_depth)" />
+	<arg name="rgb"          value="$(arg camera2_rgb)" />
+	<arg name="ir"           value="$(arg camera2_ir)" />
+      </include>
+
+      
+    </group>
+
+<!--    <group ns="$(arg camera3)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera3)" />
+	<arg name="camera_type"  value="$(arg camera3_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera3_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera3_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera3_depth)" />
+	<arg name="rgb"          value="$(arg camera3_rgb)" />
+	<arg name="ir"           value="$(arg camera3_ir)" />
+      </include>
+
+    </group> 
+
+    <group ns="$(arg camera4)">
     <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
-      <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
-      <arg name="camera"       value="$(arg camera1)" />
-      <arg name="camera_type"  value="$(arg camera1_camera_type)" />
-      <arg name="serial_no"    value="$(arg camera1_serial_no)" />
-      <arg name="usb_port_id"  value="$(arg camera1_usb_port_id)" />
-      <arg name="depth"        value="$(arg camera1_depth)" />
-      <arg name="rgb"          value="$(arg camera1_rgb)" />
-      <arg name="ir"           value="$(arg camera1_ir)" />
-    </include>
-
-  </group> 
-<!--
-  <group ns="$(arg camera2)">
-    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
-      <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
-      <arg name="camera"       value="$(arg camera2)" />
-      <arg name="camera_type"  value="$(arg camera2_camera_type)" />
-      <arg name="serial_no"    value="$(arg camera2_serial_no)" />
-      <arg name="usb_port_id"  value="$(arg camera2_usb_port_id)" />
-      <arg name="depth"        value="$(arg camera2_depth)" />
-      <arg name="rgb"          value="$(arg camera2_rgb)" />
-      <arg name="ir"           value="$(arg camera2_ir)" />
-    </include>
-
-    
-  </group>
-
-  <group ns="$(arg camera3)">
-    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
-      <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
-      <arg name="camera"       value="$(arg camera3)" />
-      <arg name="camera_type"  value="$(arg camera3_camera_type)" />
-      <arg name="serial_no"    value="$(arg camera3_serial_no)" />
-      <arg name="usb_port_id"  value="$(arg camera3_usb_port_id)" />
-      <arg name="depth"        value="$(arg camera3_depth)" />
-      <arg name="rgb"          value="$(arg camera3_rgb)" />
-      <arg name="ir"           value="$(arg camera3_ir)" />
-    </include>
-
-  </group> 
-
-  <group ns="$(arg camera4)">
-    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
-      <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
-      <arg name="camera"       value="$(arg camera4)" />
-      <arg name="camera_type"  value="$(arg camera4_camera_type)" />
-      <arg name="serial_no"    value="$(arg camera4_serial_no)" />
-      <arg name="usb_port_id"  value="$(arg camera4_usb_port_id)" />
-      <arg name="depth"        value="$(arg camera4_depth)" />
-      <arg name="rgb"          value="$(arg camera4_rgb)" />
-      <arg name="ir"           value="$(arg camera4_ir)" />
-    </include>
+    <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+    <arg name="camera"       value="$(arg camera4)" />
+    <arg name="camera_type"  value="$(arg camera4_camera_type)" />
+    <arg name="serial_no"    value="$(arg camera4_serial_no)" />
+    <arg name="usb_port_id"  value="$(arg camera4_usb_port_id)" />
+    <arg name="depth"        value="$(arg camera4_depth)" />
+    <arg name="rgb"          value="$(arg camera4_rgb)" />
+    <arg name="ir"           value="$(arg camera4_ir)" />
+  </include>
 
   </group> -->
-  
+    
 
-</group>
+  </group>
 
 
 </launch>
