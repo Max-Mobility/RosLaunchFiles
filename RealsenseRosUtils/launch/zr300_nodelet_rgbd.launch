@@ -111,8 +111,4 @@
 
   </group> <!-- camera -->
 
-<node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0 0 0 0 0 0 1 base_link camera_link 100" />
-
-
-
 </launch>

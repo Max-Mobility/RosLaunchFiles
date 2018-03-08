@@ -2,7 +2,7 @@
 <launch>
 
   <!-- Multiple Cameras -->
-  <arg name="num_cameras"     default="1"/>
+  <arg name="num_cameras"     default="3"/>
   <arg name="camera_manager"  default="camera_nodelet_manager"/>
   <arg name="camera1"         default="camera1"/>
   <arg name="camera2"         default="camera2"/>
@@ -13,7 +13,8 @@
   <!-- Localization-only mode -->
   <arg name="localization"            default="false"/>
   
-  
+
+  <arg name="cfg"                     default="$(find rtabmap_ros)/launch/config.ini"/>
   <arg name="frame_id"                default="base_link"/>     <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
   <arg name="odom_frame_id"           default=""/>                <!-- If set, TF is used to get odometry instead of the topic -->
   <arg name="map_frame_id"            default="map"/>
@@ -88,10 +89,10 @@
   </group> 
 
   <group ns="$(arg camera4)">
-    <node pkg="nodelet" type="nodelet" name="$(arg camera4)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
+  <!--  <node pkg="nodelet" type="nodelet" name="$(arg camera4)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
       <remap from="depth/image" to="depth_registered/sw_registered/image_rect_raw"/>
       <remap from="rgb/image" to="rgb/image_rect_color"/>
-    </node>
+    </node>-->
   </group>  
 
   <!-- RTABMAP STUFF -->
@@ -144,7 +145,7 @@
       <param name="wait_for_transform_duration"  type="double"   value="$(arg wait_for_transform)"/>
       <param name="database_path"        type="string" value="$(arg database_path)"/>
       <param name="approx_sync"          type="bool"   value="$(arg approx_sync)"/>
-<!--      <param name="config_path"          type="string" value="$(arg cfg)"/> -->
+      <param name="config_path"          type="string" value="$(arg cfg)"/>
       <param name="queue_size"           type="int" value="$(arg queue_size)"/>
       <param name="rgbd_cameras"                type="int"    value="$(arg num_cameras)"/>
       
@@ -156,7 +157,6 @@
       <remap from="rgbd_image1"     to="/$(arg camera2)/rgbd_image"/> 
       <remap from="rgbd_image2"     to="/$(arg camera3)/rgbd_image"/> 	
       <remap from="rgbd_image3"     to="/$(arg camera4)/rgbd_image"/> 
-      <remap from="rgbd_image"      to="/$(arg camera4)/rgbd_image"/>
 
       <param name="Vis/EstimationType"          type="string" value="0"/> <!-- should be 0 for multi-camera -->
       
@@ -168,6 +168,10 @@
       <param     if="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="false"/>
       <param unless="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="true"/>
       <param name="Mem/InitWMWithAllNodes" type="string" value="$(arg localization)"/>
+
+      <!-- parameter tuning tests -->
+      <!--<param name="map_filter_radius" type="double" value="5"/>-->
+      
     </node> 
 
   </group>

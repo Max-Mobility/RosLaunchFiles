@@ -64,8 +64,8 @@
 
   <arg name="camera3"                                                                  default="camera3"/>
   <!-- Arguments for remapping device namespaces -->
-  <arg name="camera3_camera_type"                                                      default="ZR300"/> <!-- Type of camera -->
-  <arg name="camera3_serial_no"                                                        default="3511803513"/> 
+  <arg name="camera3_camera_type"                                                      default="R200"/> <!-- Type of camera -->
+  <arg name="camera3_serial_no"                                                        default="2511011555"/> 
   <arg name="camera3_usb_port_id"                                                      default=""/> <!-- USB "Bus#-Port#" -->
   <!-- Best know configuration for generating depth registered point cloud. -->
   <param name="$(arg camera3)/driver/mode"                type="string"  value="manual" />
@@ -86,8 +86,8 @@
 
   <arg name="camera4"                                                                  default="camera4"/>
   <!-- Arguments for remapping device namespaces -->
-  <arg name="camera4_camera_type"                                                      default="R200"/> <!-- Type of camera -->
-  <arg name="camera4_serial_no"                                                        default="2511011555" /> 
+  <arg name="camera4_camera_type"                                                      default="ZR300"/> <!-- Type of camera -->
+  <arg name="camera4_serial_no"                                                        default="3511803513" /> 
   <arg name="camera4_usb_port_id"                                                      default="" /> <!-- USB "Bus#-Port#" -->
   <!-- Best know configuration for generating depth registered point cloud. -->
   <param name="$(arg camera4)/driver/mode"                type="string"  value="manual" />
@@ -116,11 +116,12 @@
       <arg name="serial_no"    value="$(arg camera1_serial_no)" />
       <arg name="usb_port_id"  value="$(arg camera1_usb_port_id)" />
     </include>
-    
+
     <include file="$(find rgbd_launch)/launch/includes/processing.launch.xml">
       <arg name="manager"      value="/$(arg manager)"/>
       <arg name="rgb_processing"                  value="$(arg rgb_processing)" />
       <arg name="ir_processing"                   value="$(arg ir_processing)" />
+      <arg name="debayer_processing"              value="false" />
       <arg name="depth_processing"                value="$(arg depth_processing)" />
       <arg name="depth_registered_processing"     value="$(arg depth_registered_processing)" />
       <arg name="disparity_processing"            value="$(arg disparity_processing)" />
@@ -128,7 +129,6 @@
       <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
       <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
     </include>
-
 
   </group> 
 
@@ -151,8 +151,8 @@
       <arg name="disparity_registered_processing" value="$(arg disparity_registered_processing)" />
       <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
       <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
-    </include>
-    
+    </include> 
+
   </group>
 
   <group ns="$(arg camera3)">
@@ -176,10 +176,11 @@
       <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
     </include>
 
+
   </group> 
 
   <group ns="$(arg camera4)">
-    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+<!--    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
       <arg name="manager"      value="/$(arg manager)" />
       <arg name="camera"       value="$(arg camera4)" />
       <arg name="camera_type"  value="$(arg camera4_camera_type)" />
@@ -197,8 +198,9 @@
       <arg name="disparity_registered_processing" value="$(arg disparity_registered_processing)" />
       <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
       <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
-    </include>
+    </include> -->
 
   </group> 
+
 
 </launch>
