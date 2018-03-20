@@ -27,8 +27,6 @@
   <arg name="ir"               default="ir" />
   <arg name="depth_registered" default="depth_registered" />
   <arg name="projector"        default="projector" />
-  <remap from="/camera/depth/image_raw" to="/camera/depth_registered/image_raw"/>
-  <remap from="/camera/depth/camera_info" to="/camera/depth_registered/camera_info"/>
 
   <!-- Size of message queue for synchronizing subscribed topics in depth_image_proc package.
        Increase this value for higher resolution and/or frame rates.

@@ -1,0 +1,38 @@
+<!-- Processing node only -->
+
+<launch>
+	
+  <arg name="camera4"                                                                  default="camera4"/>
+  <arg name="rgb_processing"                                                           default="true"/>
+  <arg name="ir_processing"                                                            default="true"/>
+  <arg name="depth_processing"                                                         default="true"/>
+  <arg name="depth_registered_processing"                                              default="true"/>
+  <arg name="disparity_processing"                                                     default="true"/>
+  <arg name="disparity_registered_processing"                                          default="true"/>
+  <arg name="hw_registered_processing"                                                 default="true" />
+  <arg name="sw_registered_processing"                                                 default="true" />
+
+  <remap from="/camera4/depth/image_rect_raw" to="/camera4/depth1/image_rect_raw"/>
+
+
+  <arg name="manager" value="processing_nodelet_manager" /> <!-- Single nodelet manager for all cameras -->
+  <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
+
+  <group ns="$(arg camera4)">
+    <include file="$(find rgbd_launch)/launch/includes/processing.launch.xml">
+      <arg name="manager"      value="/$(arg manager)"/>
+      <arg name="rgb_processing"                  value="$(arg rgb_processing)" />
+      <arg name="ir_processing"                   value="$(arg ir_processing)" />
+      <arg name="depth_processing"                value="$(arg depth_processing)" />
+      <arg name="depth_registered_processing"     value="$(arg depth_registered_processing)" />
+      <arg name="disparity_processing"            value="$(arg disparity_processing)" />
+      <arg name="disparity_registered_processing" value="$(arg disparity_registered_processing)" />
+      <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
+      <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
+    </include>
+
+
+  </group> 
+
+
+</launch>

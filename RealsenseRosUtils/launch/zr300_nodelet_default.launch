@@ -2,7 +2,7 @@
 <launch>
   <arg name="camera"       default="camera" />
   <arg name="camera_type"  default="ZR300" /> <!-- Type of camera -->
-  <arg name="serial_no"    default="" />
+  <arg name="serial_no"    default="3511803513" />
   <arg name="usb_port_id"  default="" /> <!-- USB "Bus#-Port#" -->
   <arg name="manager"      default="nodelet_manager" />
 
