@@ -12,7 +12,7 @@
   <arg name="hw_registered_processing"                                                 default="true" />
   <arg name="sw_registered_processing"                                                 default="true" />
 
-  <remap from="/camera4/depth/image_rect_raw" to="/camera4/depth1/image_rect_raw"/>
+<!--  <remap from="/camera4/depth/image_rect_raw" to="/camera4/depth1/image_rect_raw"/> -->
 
 
   <arg name="manager" value="processing_nodelet_manager" /> <!-- Single nodelet manager for all cameras -->

@@ -1,0 +1,43 @@
+
+<launch>
+
+  <!-- Multiple Cameras -->
+  <arg name="camera_manager"  default="camera_nodelet_manager"/>
+  <arg name="camera1"         default="camera1"/>
+  <arg name="camera2"         default="camera2"/>
+  <arg name="camera3"         default="camera3"/>
+  <arg name="camera4"         default="camera4"/> 
+  
+  <!-- Nodes -->
+
+  <!-- sync rgb/depth images per camera -->
+<!--  <group ns="$(arg camera1)">
+    <node pkg="nodelet" type="nodelet" name="$(arg camera1)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
+      <remap from="depth/image" to="depth_registered/sw_registered/image_rect_raw"/>
+      <remap from="rgb/image" to="rgb/image_rect_color"/>
+    </node>
+  </group> 
+
+  <group ns="$(arg camera2)">
+    <node pkg="nodelet" type="nodelet" name="$(arg camera2)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
+      <remap from="depth/image" to="depth_registered/sw_registered/image_rect_raw"/>
+      <remap from="rgb/image" to="rgb/image_rect_color"/>
+    </node>
+  </group>
+  
+  <group ns="$(arg camera3)">
+    <node pkg="nodelet" type="nodelet" name="$(arg camera3)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
+      <remap from="depth/image" to="depth_registered/sw_registered/image_rect_raw"/>
+      <remap from="rgb/image" to="rgb/image_rect_color"/>
+    </node>
+  </group> -->
+
+  <group ns="$(arg camera4)">
+    <node pkg="nodelet" type="nodelet" name="$(arg camera4)_rgbd_sync" args="load rtabmap_ros/rgbd_sync /$(arg camera_manager)">
+      <remap from="depth/image" to="depth_registered/sw_registered/image_rect_raw"/> 
+      <remap from="rgb/image" to="rgb/image_rect_color"/> 
+    </node>
+  </group> 
+
+
+</launch>

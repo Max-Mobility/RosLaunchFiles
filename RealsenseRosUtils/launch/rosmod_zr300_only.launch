@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Sample launch file for using multiple RealSense R200 cameras -->
 
 <launch>
@@ -106,8 +107,13 @@
   <param name="$(arg camera4)/driver/tf_publication_rate" type="double"  value="$(arg tf_publication_rate)"/>
 
 
+
   <arg name="manager" value="camera_nodelet_manager" /> <!-- Single nodelet manager for all cameras -->
   <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
+
+  <arg name="pmanager" value="processing_nodelet_manager" /> <!-- Nodelet manager for rgbd_processing -->
+  <node pkg="nodelet" type="nodelet" name="$(arg pmanager)" args="manager" output="screen"/>
+
   
 
   <group ns="$(arg camera4)">
@@ -120,9 +126,9 @@
       <arg name="enable_imu"   value="$(arg zr300_enable_imu)" />
     </include>
 
-<!--
+
     <include file="$(find rgbd_launch)/launch/includes/processing.launch.xml">
-    <arg name="manager"      value="/$(arg manager)"/>
+    <arg name="manager"      value="/$(arg pmanager)"/>
     <arg name="rgb_processing"                  value="$(arg rgb_processing)" />
     <arg name="ir_processing"                   value="$(arg ir_processing)" />
     <arg name="depth_processing"                value="$(arg depth_processing)" />
@@ -132,8 +138,6 @@
     <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
     <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
     </include>
-
-    -->
 
 
 
