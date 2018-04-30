@@ -1,12 +1,9 @@
 <launch>
 
-
-<!-- xboxdrv not working, need to manually start this-->
-<!-- <node name="xboxdrv_script" pkg="joy" type="run_xboxdrv.sh" /> -->
-
+<node required="true" pkg="joy" type="run_xboxdrv.sh" name="xboxdrv" ns="controller"/>
 
 <!-- joy node -->
-<node respawn="true" pkg="joy" type="joy_node" name="xbox360_joy" ns="xbox360">
+<node respawn="true" pkg="joy" type="joy_node" name="xbox360_joy" ns="controller">
 <param name="dev" type="string" value="/dev/input/js0" />
 <param name="deadzone" value="0.12" />
 <param name="coalesce_interval" value="0.01" />
